@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+// to give React access to STORE, import
+import { Provider } from 'react-redux';
 
 class App extends Component {
   render() {
@@ -25,4 +27,5 @@ class App extends Component {
   }
 }
 
+// then wrap app in PROVIDER
 export default App;
