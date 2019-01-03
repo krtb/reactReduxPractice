@@ -1,31 +1,38 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-// to give React access to STORE, import
-import { Provider } from 'react-redux';
+// add connect method to connect REACT and REDUX STORE
+import { connect } from 'react-redux';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+const App = (props) => {
+
+  return (
+    <div>
+      <p>{props.count}</p>
+      <button onClick={props.increment}>+</button>
+      <button onClick={props.decrement}>-</button>
+    </div>
+  );
+
+};
+
+// to access the redux STATE in a COMPONENT
+function mapStateToProps(state) {
+
+  // should return an object
+  // can be referenced in component now through PROPS
+  return {
+    count: state
+  };
+
 }
 
-// then wrap app in PROVIDER
-export default App;
+function mapDispatchToProps(dispatch) {
+  return {
+    increment: () => dispatch({ type: 'INCREMENT' }),
+    decrement: () => dispatch({ type: 'DECREMENT' })
+  };
+
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

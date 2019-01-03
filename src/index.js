@@ -4,6 +4,8 @@ import * as serviceWorker from './serviceWorker';
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+// 'bank vault' for state of app
+// manages updating state of app
 import { createStore } from 'redux'
 import App from './App'
 
@@ -29,8 +31,11 @@ const counter = (state = 0, action) => {
 
 };
 
+// need to call createStore and pass in the REDUCER
 const store = createStore(counter);
 
+// then wrap app in PROVIDER
+// allows React to have access to the STORE
 render(
     <Provider store={store}>
         <App />
