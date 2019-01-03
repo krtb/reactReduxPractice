@@ -27,6 +27,9 @@ function mapStateToProps(state) {
 
 }
 
+// to fire ACTIONS need below function
+// allows us to fire ACTIONS from COMPONENTS
+// and update STATE
 function mapDispatchToProps(dispatch) {
   return {
     increment: () => dispatch({ type: 'INCREMENT' }),
@@ -35,4 +38,6 @@ function mapDispatchToProps(dispatch) {
 
 }
 
+// need to add both functions to connect
+// if only using one, other arg should be NULL
 export default connect(mapStateToProps, mapDispatchToProps)(App);
